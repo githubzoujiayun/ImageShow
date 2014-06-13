@@ -14,9 +14,6 @@ public class BaseActivity extends Activity {
 	public SharedPreferences.Editor mEditor;
 	public String yoyoShare;
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);

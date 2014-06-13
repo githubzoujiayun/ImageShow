@@ -174,7 +174,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:roundHeight
+          @attr name com.suo.demo:roundHeight
         */
         public static final int RoundAngleImageView_roundHeight = 1;
         /**
@@ -190,7 +190,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:roundWidth
+          @attr name com.suo.demo:roundWidth
         */
         public static final int RoundAngleImageView_roundWidth = 0;
     };
