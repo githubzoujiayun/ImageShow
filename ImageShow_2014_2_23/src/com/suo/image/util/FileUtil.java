@@ -1,0 +1,109 @@
+package com.suo.image.util;
+
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.Map;
+
+import android.os.Environment;
+
+public class FileUtil {
+
+	/**
+	 * 
+	 * Deletes the directory passed in.
+	 * 
+	 * @param dir
+	 *            Directory to be deleted
+	 */
+
+	public static void doDeleteEmptyDir(String dir) {
+
+		boolean success = (new File(dir)).delete();
+
+		if (success) {
+//			Log.d("Successfully deleted empty directory: " + dir);
+		} else {
+//			Log.d("Failed to delete empty directory: " + dir);
+		}
+
+	}
+
+	/**
+	 * 
+	 * Deletes all files and subdirectories under "dir".
+	 * 
+	 * @param dir
+	 *            Directory to be deleted
+	 * 
+	 * @return boolean Returns "true" if all deletions were successful.
+	 * 
+	 *         If a deletion fails, the method stops attempting to
+	 * 
+	 *         delete and returns "false".
+	 */
+
+	public static boolean deleteDir(File dir) {
+		if (dir.isDirectory()) {
+			String[] children = dir.list();
+			for (int i = 0; i < children.length; i++) {
+				boolean success = deleteDir(new File(dir, children[i]));
+				if (!success) {
+					return false;
+				}
+			}
+		}
+		// The directory is now empty so now it can be smoked
+		return dir.delete();
+	}
+	
+	public static boolean deleteDir(String path){
+		File f = new File(path);
+		
+		if(!FileUtil.deleteDir(f)){
+			return false;
+		}
+		return f.delete();
+	}
+	
+	public static boolean SDCardExists(){
+		return Environment.getExternalStorageState().equals(
+				android.os.Environment.MEDIA_MOUNTED);
+	}
+	
+	
+	public static void writeObjToFile(Object obj, String filename) {
+		// List��map���л�����
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos); // ���ཫ����д���ֽ���
+			oos.writeObject(obj);
+			byte[] data = baos.toByteArray();// �@ȡ��������л�����
+			OutputStream os = new FileOutputStream(new File(filename));
+			os.write(data);
+			os.flush();
+			os.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Object readObjFromFile(String filename) {
+		Object obj = null;
+		try {
+			FileInputStream fis = new FileInputStream(filename);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			if (fis.available() > 0)
+				obj = ois.readObject();
+			ois.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+}

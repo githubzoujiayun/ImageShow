@@ -1,0 +1,31 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#ffffff" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.suo.image.view.MyGridView 
+        	android:id="@+id/imageGridView"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:numColumns="2"
+        	android:horizontalSpacing="10dp"
+        	android:verticalSpacing="10dp"/>
+    	<Button 
+    	    android:id="@+id/more"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:text="more"
+        	android:textColor="#ffffff"
+        	android:background="@drawable/more_selector"
+        	android:layout_margin="10dp"/>
+    </LinearLayout>
+    
+
+</ScrollView>

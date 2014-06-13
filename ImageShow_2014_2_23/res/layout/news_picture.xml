@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    
+<!-- 车型库和图片新闻处都用到了，一旦修改，需要注意使用的地方 -->
+    <com.suo.image.view.MyGallery
+        android:id="@+id/picGallery"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:spacing="5dp"/>
+    
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        style="@style/top_relativelayout"
+        android:background="@drawable/image_top" >
+
+        <ImageButton
+            android:id="@+id/back"
+            style="@style/back_home_button" />
+
+        <TextView
+            android:id="@+id/text"
+            style="@style/top_layout_text"
+            android:text="图片"
+            android:layout_width="180dp"
+            android:gravity="center"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:focusableInTouchMode="true"
+			android:focusable="true"
+			android:marqueeRepeatLimit="marquee_forever"  />
+        <ImageButton 
+            android:id="@+id/share"
+            style="@style/top_right_button"
+            android:background="@drawable/imageshare"/>
+        
+    </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/newsContent"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#ffffff"
+        android:text="暂无文字"
+        android:layout_gravity="bottom" />
+    
+</FrameLayout>

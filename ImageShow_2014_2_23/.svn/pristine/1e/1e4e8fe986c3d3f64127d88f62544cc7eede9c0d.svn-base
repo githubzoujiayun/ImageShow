@@ -1,0 +1,36 @@
+package com.suo.image;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Environment;
+
+
+public class Pub {
+	
+	public static String getBaseDir() {
+		String sdPath = Environment.getExternalStorageDirectory()
+				.getAbsolutePath();
+		return sdPath + "/.imageshow/";
+	}
+	/**
+	 * 从本地获取图片
+	 * 
+	 * @param url
+	 * @return
+	 */
+	public static Drawable getLocalDrawable(BaseActivity context, String url) {
+		return ImageCache.getInstance().getDrawable(context, url);
+	}
+	
+	/**
+	 * 从云端下载图片 从云端下载图片，并保存到本地 与getDrawableByUrl()不同的是，此函数不返回drawable
+	 * 
+	 * @param url
+	 * @return
+	 */
+	public static boolean downloadDrawableByUrl(BaseActivity context, String url) {
+		return ImageCache.getInstance().downloadDrawableByUrl(context, url);
+	}
+	
+	
+}
